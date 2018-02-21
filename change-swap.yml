@@ -1,6 +1,0 @@
----
-- name: change-swap Skript ausführen mit 'switch'
-hosts: all
-tasks:
-	- name: change-swap
-	script: /root/change-swap switch
