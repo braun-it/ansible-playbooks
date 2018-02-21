@@ -1,0 +1,14 @@
+
+---
+ 
+- hosts: all
+  tasks:
+    # Dieses Playbook updatet alle .deb Pakete auf Ubuntu Systemen 
+    # Dabei werden nur Systeme upgedatet, die als Ubuntu Systeme markiert sind
+    - name: Update & Upgrade Ubuntu (dist-upgrade)
+      apt: >
+        update_cache=yes
+        cache_valid_time=1200
+        upgrade=dist
+      when: >
+        ansible_distribution == 'Ubuntu'

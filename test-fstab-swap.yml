@@ -1,0 +1,6 @@
+---
+- name: change-swap Skript ausführen mit 'test-fstab'
+  hosts: all
+  tasks:
+    - name: change-swap test-fstab
+      script: /root/change-swap test-fstab

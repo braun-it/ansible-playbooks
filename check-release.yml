@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Verify ansible_lsb
+      debug: var=ansible_lsb.major_release|int
+

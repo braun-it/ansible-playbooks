@@ -1,0 +1,11 @@
+
+---
+ 
+- hosts: all
+  tasks:
+    # Dieses Playbook updatet alle .deb Pakete auf Ubuntu Systemen 
+    # Dabei werden nur Systeme upgedatet, die als Ubuntu Systeme markiert sind
+   - name: Autoremove unused packages
+     command: apt-get -y autoremove
+     register: autoremove_output
+     changed_when: "'The following packages will be REMOVED' in autoremove_output.stdout"

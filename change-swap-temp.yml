@@ -1,0 +1,6 @@
+---
+- name: change-swap Skript ausführen mit 'switch-temp'
+  hosts: all
+  tasks:
+    - name: change-swap temporär
+      script: /root/change-swap switch-temp

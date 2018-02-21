@@ -1,0 +1,44 @@
+---
+- hosts: all
+  tasks:
+   - name: Create snapshot
+     vmware_guest_snapshot:
+       hostname: 192.168.1.209
+       username: DMZ2\Ansible
+       password: vmware
+       datacenter: Datencenter Level3
+       name: dummy_vm
+       state: present
+       snapshot_name: Ansible-Snapshot
+       description: Snapshot von Ansible Tower
+     delegate_to: localhost
+
+   - name: Remove a snapshot
+     vmware_guest_snapshot:
+       hostname: 192.168.1.209
+       username: administrator@vsphere.local
+       password: vmware
+       name: dummy_vm
+       datacenter: Datencenter Level3
+       state: remove
+       snapshot_name: Ansible-Snapshot
+     delegate_to: localhost
+
+   - name: Revert to a snapshot
+     vmware_guest_snapshot:
+       hostname: 192.168.1.209
+       username: administrator@vsphere.local
+       password: vmware
+       datacenter: Datencenter Level3
+       name: dummy_vm
+       state: revert
+       snapshot_name: Ansible-Snapshot
+     delegate_to: localhost
+     
+     - name: Remove all snapshots of a VM
+       vmware_guest_snapshot:
+         hostname: 192.168.1.209
+         username: administrator@vsphere.local
+         password: vmware
+         name: dummy_vm
+         state: remove_all
